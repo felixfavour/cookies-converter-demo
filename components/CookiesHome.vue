@@ -12,6 +12,12 @@
           Submit
         </button>
       </form>
+      <hr style="margin-top: 2rem">
+      <h3>My previously saved cookies</h3>
+      <div>
+        <b>Phrase/Word: </b>
+        <span>{{ cookies.get('word') }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -21,14 +27,17 @@
   import CryptoJS from 'crypto-js'
 
   const word = ref('')
+  const config = useRuntimeConfig()
 
   const cookies = Cookies.withConverter({
     read: function(value) {
-      const decryptedValue = CryptoJS.AES.decrypt(value, config.public.encKey).toString()
+      console.log(value)
+      const decryptedValue = CryptoJS.AES.decrypt(value, config.public.encKey).toString(CryptoJS.enc.Utf8)
       console.log('DECRYPTED', decryptedValue);
       return decryptedValue
     },
     write: function (value) {
+      console.log(value)
       const encryptedValue = CryptoJS.AES.encrypt(value, config.public.encKey).toString()
       console.log('ENCRYPTED', encryptedValue);
       return encryptedValue
