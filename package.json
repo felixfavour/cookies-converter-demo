@@ -1,0 +1,19 @@
+{
+  "name": "cookies-converter-demo",
+  "version": "1.0.0",
+  "description": "Demo to explore Converters in js-cookie, and how they could aid cookies encryption",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Favour Felix",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
