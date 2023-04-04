@@ -8,7 +8,7 @@
           Phrase/Word
           <input v-model="word" type="text" id="word">
         </label>
-        <button :disabled="!(email.length > 4 && password.length > 1)" type="submit" @click="submit">
+        <button :disabled="!(word.length > 1)" type="submit" @click="submit">
           Submit
         </button>
       </form>
@@ -21,11 +21,19 @@
   import CryptoJS from 'crypto-js'
 
   const word = ref('')
-  const password = ref('')
-  const config = useRuntimeConfig()
+
+  const cookies = Cookies.withConverter({
+    read: function(value, name) {
+      return Cookies.converter.read(value, name)
+    },
+    write: function (value) {
+      return value
+    }
+  })
 
   const submit = () => {
     alert('Cookie Stored')
+    cookies.set('word', word.value)
   }
 </script>
 
