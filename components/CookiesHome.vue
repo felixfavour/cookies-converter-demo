@@ -16,20 +16,23 @@
       <h3>My previously saved cookies</h3>
       <div>
         <b>Phrase/Word: </b>
-        <!-- <span>{{ cookies.get('word') }}</span> -->
+        <span>{{ wordDecrypted }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-  import cookies from "~~/plugins/cookies"
+  import cookiesFunc from "~~/plugins/cookies"
+  const cookies = cookiesFunc()
 
   const word = ref('')
+  const wordDecrypted = ref('')
 
   const submit = () => {
     alert('Cookie Stored')
-    cookies().set('word', word.value)
+    cookies.set('word', word.value)
+    wordDecrypted.value = cookies.get('word')
   }
 </script>
 

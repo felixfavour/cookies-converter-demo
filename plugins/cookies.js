@@ -3,7 +3,7 @@ import CryptoJS from "crypto-js";
 
 export default () => {
   const config = useRuntimeConfig();
-  const cookies = Cookies.withConverter({
+  const cookiesFunc = Cookies.withConverter({
     read: function (value) {
       const decryptedValue = CryptoJS.AES.decrypt(
         value,
@@ -19,5 +19,5 @@ export default () => {
       return encryptedValue;
     },
   });
-  return cookies;
+  return cookiesFunc;
 };
