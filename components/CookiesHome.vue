@@ -23,11 +23,15 @@
   const word = ref('')
 
   const cookies = Cookies.withConverter({
-    read: function(value, name) {
-      return Cookies.converter.read(value, name)
+    read: function(value) {
+      const decryptedValue = CryptoJS.AES.decrypt(value, config.public.encKey).toString()
+      console.log('DECRYPTED', decryptedValue);
+      return decryptedValue
     },
     write: function (value) {
-      return value
+      const encryptedValue = CryptoJS.AES.encrypt(value, config.public.encKey).toString()
+      console.log('ENCRYPTED', encryptedValue);
+      return encryptedValue
     }
   })
 
