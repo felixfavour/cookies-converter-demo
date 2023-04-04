@@ -1,19 +1,18 @@
 {
-  "name": "cookies-converter-demo",
-  "version": "1.0.0",
-  "description": "Demo to explore Converters in js-cookie, and how they could aid cookies encryption",
-  "main": "app.js",
+  "private": true,
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Favour Felix",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.2"
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "@types/js-cookie": "^3.0.3",
+    "crypto-js": "^4.1.1",
+    "nuxt": "^3.2.2"
+  },
+  "dependencies": {
+    "js-cookie": "^3.0.1"
   }
 }
