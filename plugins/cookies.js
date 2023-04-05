@@ -2,8 +2,13 @@ import Cookies from "js-cookie";
 import CryptoJS from "crypto-js";
 
 export default () => {
+  const inSixHours = 0.25
   const config = useRuntimeConfig();
-  const cookiesFunc = Cookies.withConverter({
+  const cookiesFunc = Cookies.withAttributes({
+    secure: true,
+    sameSite: 'Strict',
+    expires: inSixHours
+  }).withConverter({
     read: function (value) {
       const decryptedValue = CryptoJS.AES.decrypt(
         value,
