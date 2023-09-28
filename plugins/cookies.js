@@ -4,7 +4,7 @@ import CryptoJS from "crypto-js";
 export default () => {
   const inSixHours = 0.25
   const config = useRuntimeConfig();
-  const cookiesFunc = Cookies.withAttributes({
+  const cookies = Cookies.withAttributes({
     secure: true,
     sameSite: 'Strict',
     expires: inSixHours
@@ -24,5 +24,5 @@ export default () => {
       return encryptedValue;
     },
   });
-  return cookiesFunc;
+  return cookies;
 };
