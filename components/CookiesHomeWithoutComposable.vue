@@ -23,13 +23,16 @@
 </template>
 
 <script setup>
+import cookiesFunc from "~~/plugins/cookies"
+const cookies = cookiesFunc()
+
 const word = ref("")
 const wordDecrypted = ref("")
 
 const submit = () => {
   alert("Cookie Stored")
-  useCookies().set("word", word.value)
-  wordDecrypted.value = useCookies().get("word")
+  cookies.set("word", word.value)
+  wordDecrypted.value = cookies.get("word")
 }
 </script>
 
